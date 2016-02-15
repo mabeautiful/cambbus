@@ -1,25 +1,45 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <%= form_for(@post) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation alert alert-danger">
+        <b><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</b>
+        <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="container container-min">
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :post_type %><br>
+        <%= f.text_field :post_type, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :price %><br>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+        
+      </div>
+      <div class="form-group">
+        <%= f.label :phone %><br>
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content %><br>
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-lg btn-success" %>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
