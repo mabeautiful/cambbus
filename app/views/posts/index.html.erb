@@ -4,19 +4,22 @@
     <div class="row">
       <% @posts.each do |post| %>
           <div class="col-sm-6 col-md-4">
-            <%= link_to(post) do %>
             <div class="thumbnail">
-              <img src="..." alt="...">
+              <%= link_to(post) do %>
+              <%= image_tag("image_upload.png", :alt => "images thumbnail", :class => "img-responsive") %>
+              <% end %>
               <div class="caption">
-                <h3><td><%= post.title %></td></h3>
-                <p><%= post.content %></p>
+                <h3><td><%= link_to post.title, post %></td></h3>
                 <p>
-                  <%= link_to 'Edit', edit_post_path(post), class: "btn btn-md btn-success" %>
-                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger" %>
+                  <small>Posted by: <%= post.user.username %> - <em><%= time_ago_in_words(post.created_at) %> ago</em></small>
+                </p>
+                <p><%= truncate(post.content, length: 100) %></p>
+                <p>
+                  <%= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-success" %>
+                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
                 </p>
               </div>
             </div>
-            <% end %>
           </div>
       <% end %>
     </div>
