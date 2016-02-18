@@ -1,6 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .container-min{
     max-width: 640px;
+}
+
+.alert-error{
+    ul{
+        li{
+            list-style: none;
+            padding: 5px 0;
+            i{
+                padding-right: 5px;
+            }
+        }
+    }
 }
