@@ -4,7 +4,7 @@
 	<%= @user.username %>
 
 	<div class="row user-post">
-	  <% @user.posts.each do |post| %>
+	  <% @user_all.each do |post| %>
 	      <div class="col-sm-4 col-md-3">
 	        <div class="thumbnail">
 	          <%= link_to(post) do %>
@@ -25,4 +25,5 @@
 	      </div>
 	  <% end %>
 	</div>
+	<%= will_paginate @user_all %>
 </div>
